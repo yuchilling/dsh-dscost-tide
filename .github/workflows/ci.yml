@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags-ignore: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Syntax check both halves
+        run: |
+          node --check lib/index.js
+          node --check lib/client.js
+
+      - name: Offline unit tests
+        run: node --test test/plugin.test.mjs
+
+      - name: Manifest sanity
+        run: node scripts/check-publish.mjs

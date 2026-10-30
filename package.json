@@ -1,0 +1,62 @@
+{
+  "name": "dsh-dscost-tide",
+  "version": "1.0.0",
+  "description": "DeepSeek peak/valley indicator in the DSH sidebar footer: phase at a glance, account balance, and a click-through dashboard with balance plus time-dimensioned token, cache-hit, cost and request statistics",
+  "license": "MIT",
+  "author": "yanzi-251147",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "peak-valley",
+    "pricing",
+    "balance",
+    "usage",
+    "tokens",
+    "sidebar"
+  ],
+  "homepage": "https://github.com/yanzi-251147/dsh-dscost-tide#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanzi-251147/dsh-dscost-tide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanzi-251147/dsh-dscost-tide/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1 <0.3.0-0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/plugin.test.mjs",
+    "pack:check": "node scripts/check-publish.mjs",
+    "prepare:publish": "node scripts/prepare-publish.mjs"
+  }
+}

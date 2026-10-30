@@ -1,0 +1,103 @@
+# dsh-dscost-tide
+
+> One glance at the DeepSeek Harness sidebar footer tells you **whether DeepSeek is in its peak-priced window, how much balance you have left, and where those tokens went.**
+
+A DSH bundle plugin that occupies the `sidebar.footer.action` seat in the sidebar footer, right after the built-in balance widget.
+
+## What you get
+
+A two-row card in the sidebar footer, tinted red during peak hours and green off-peak, plus a click-through dashboard.
+
+```
+● Peak     2h 30m to off-peak
+¥6.77                      14:32
+```
+
+The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total, topped-up wallet, granted wallet), and usage statistics.
+
+```
+Usage          [Today][7 days][30 days][All time]
+Tokens        10.69M        Cache hit rate   95.57%
+Cost          ¥1.27         API requests        137
+Prompt        10,550,026 (hit 10,082,816 · miss 467,210)
+Output        149,427
+Model calls   137 · ¥1.2666
+Web search    0 · ¥0.0000
+Days          6 · avg ¥0.2111
+Window        2026-10-05 to 2026-10-05
+```
+
+## Features
+
+- **Peak/valley at a glance** — official windows (Beijing time, weekdays 09:00–12:00 and 14:00–18:00 are peak; everything else, including whole weekends since 2026-08-23, is off-peak), with a live countdown to the next switch.
+- **Account balance** — the Host's authorized DeepSeek account balance (topped-up + granted wallets), falling back to `DEEPSEEK_API_KEY` against `api.deepseek.com/user/balance`.
+- **Usage by time dimension** — `today` / `7 days` / `30 days` / `all time`, with consumed tokens, cache hit rate, cost and API request count, plus the prompt hit/miss split, output, model calls, web-search calls, daily average and covered window.
+- **Real prices** — every `assistant/message` usage record is priced with the band in force **at its own timestamp** (including the 2026-09-10 12:00 flash reprice); web searches are billed at ¥0.02 each.
+- **Quiet** — usage is fetched only while the dashboard is open, and folded session logs are memoised by their revision so a refresh only re-reads what changed.
+
+## Install
+
+### From the plugin catalogue
+
+Once published:
+
+```bash
+dsh plugin add @yanzi-251147/dsh-dscost-tide
+```
+
+or open it in **Plugins → Installed**. Afterwards, **fully quit and restart DeepSeek Harness** — the client bundle is preloaded at startup, so a hot reload cannot pick up new UI code.
+
+### From local source (`link:`)
+
+For development, add to `~/.dsh/profiles/<profile>/package.json`:
+
+```json
+{
+  "dependencies": { "dsh-dscost-tide": "link:E:/path/to/dsh-dscost-tide" },
+  "dsh": { "profile": { "bundles": ["...", "dsh-dscost-tide"] } }
+}
+```
+
+Then run `pnpm install` in the profile directory and restart DSH.
+
+## Pricing model
+
+| Family | Off-peak input | Off-peak cache hit | Off-peak output | Peak |
+| --- | ---: | ---: | ---: | ---: |
+| Flash (`deepseek-v4-flash`, `deepseek-flash`) | ¥1 / 1M | ¥0.02 / 1M | ¥4 / 1M | ×2 |
+| Flash before 2026-09-10 12:00 | ¥1.5 / 1M | ¥0.05 / 1M | ¥4.5 / 1M | ×2 |
+| Pro (`deepseek-v4-pro`) | ¥4.5 / 1M | ¥0.15 / 1M | ¥13.5 / 1M | ×2 |
+
+Peak/valley pricing starts 2026-08-17; older records are charged the off-peak rate. Amounts are CNY. If a number disagrees with your bill, the [official price page](https://api-docs.deepseek.com/quick_start/pricing) wins.
+
+## Data and privacy
+
+- **Phase** is computed locally from the wall clock — no network.
+- **Balance** comes from the Host's account grant (or your `DEEPSEEK_API_KEY`), exposed on the loopback route `/dsh-dscost-tide/api/balance`.
+- **Usage** is folded from local `~/.dsh/sessions/**` logs only. Message content is never read or sent anywhere; fork/sub-agent sessions skip their inherited parent prefix via `inheritedEventCount`.
+- Both routes serve loopback requests only: the `Host` header must be loopback/trusted, cross-site requests are refused, and `Origin` must match.
+
+## Compatibility
+
+- DeepSeek Harness **0.2.x** (`engines.dsh: >=0.2.0-rc.1 <0.3.0-0`), verified on `0.2.1-rc.5` (Windows desktop).
+- The browser half uses `@deepseek-ai/dsh-client-ui-primitives` when present and falls back to its own modal otherwise.
+- Node.js ≥ 22 is only needed for development and tests.
+
+## Development
+
+```bash
+node --test test/plugin.test.mjs  # offline unit tests, no DSH runtime needed
+node scripts/check-publish.mjs     # manifest / files / placeholder checks
+node scripts/prepare-publish.mjs   # build the publishable copy and pack it
+```
+
+The working tree keeps `"name": "dsh-dscost-tide"` (it is the install key in the profile's `dependencies` / `dsh.profile.bundles`), so publishing under the scoped npm name starts with:
+
+```bash
+node scripts/prepare-publish.mjs --name @yanzi-251147/dsh-dscost-tide --repo yanzi-251147/dsh-dscost-tide
+cd _intermediate/publish && npm publish --access public
+```
+
+## License
+
+[MIT](./LICENSE)

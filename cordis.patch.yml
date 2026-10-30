@@ -1,0 +1,5 @@
+# dsh bundle patch: mount the dsh-dscost-tide row when this package is
+# enabled in a profile. Mirrors the @ychris12138/dsh-usage-stats install layout.
+- insert:
+    - id: dsh-dscost-tide
+      name: dsh-dscost-tide
