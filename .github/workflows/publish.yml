@@ -37,13 +37,26 @@ jobs:
             exit 1
           fi
 
+      - name: Skip when this version is already on npm
+        id: exists
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if npm view "@yanzi-251147/dsh-dscost-tide@${version}" version >/dev/null 2>&1; then
+            echo "already=true" >> "$GITHUB_OUTPUT"
+            echo "@yanzi-251147/dsh-dscost-tide@${version} is already published — skipping."
+          else
+            echo "already=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build the publishable copy
+        if: steps.exists.outputs.already != 'true'
         run: |
           node scripts/prepare-publish.mjs --no-pack --out .publish \
             --name "@yanzi-251147/dsh-dscost-tide" \
             --repo "yanzi-251147/dsh-dscost-tide"
 
       - name: Publish
+        if: steps.exists.outputs.already != 'true'
         working-directory: .publish
         run: npm publish --provenance --access public
         env:
