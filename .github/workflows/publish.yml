@@ -38,7 +38,10 @@ jobs:
           fi
 
       - name: Build the publishable copy
-        run: node scripts/prepare-publish.mjs --no-pack --out .publish
+        run: |
+          node scripts/prepare-publish.mjs --no-pack --out .publish \
+            --name "@yanzi-251147/dsh-dscost-tide" \
+            --repo "yanzi-251147/dsh-dscost-tide"
 
       - name: Publish
         working-directory: .publish
