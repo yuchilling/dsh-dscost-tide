@@ -121,7 +121,7 @@ node scripts/prepare-publish.mjs   # 生成可发布副本并打包，打印 tar
 `prepare-publish` 会把可发布的文件复制到 `_intermediate/publish/`，并改写仓库地址。本地工作树里的 `name` 保持 `dsh-dscost-tide` 不动（它是 profile `dependencies` / `dsh.profile.bundles` 里的安装键），npm 上的包名也沿用同一个，发布前跑一次：
 
 ```bash
-node scripts/prepare-publish.mjs --repo yanzi-251147/dsh-dscost-tide
+node scripts/prepare-publish.mjs --repo yuchilling/dsh-dscost-tide
 cd _intermediate/publish && npm publish --access public
 ```
 

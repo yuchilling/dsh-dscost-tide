@@ -94,7 +94,7 @@ node scripts/prepare-publish.mjs   # build the publishable copy and pack it
 The working tree keeps `"name": "dsh-dscost-tide"` (it is the install key in the profile's `dependencies` / `dsh.profile.bundles`), and that same unscoped name is used on npm, so publishing starts with:
 
 ```bash
-node scripts/prepare-publish.mjs --repo yanzi-251147/dsh-dscost-tide
+node scripts/prepare-publish.mjs --repo yuchilling/dsh-dscost-tide
 cd _intermediate/publish && npm publish --access public
 ```
 

@@ -1,9 +1,9 @@
 {
   "name": "dsh-dscost-tide",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DeepSeek peak/valley indicator in the DSH sidebar footer: phase at a glance, account balance, and a click-through dashboard with balance plus time-dimensioned token, cache-hit, cost and request statistics",
   "license": "MIT",
-  "author": "yanzi-251147",
+  "author": "yuchilling",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -31,13 +31,13 @@
     "tokens",
     "sidebar"
   ],
-  "homepage": "https://github.com/yanzi-251147/dsh-dscost-tide#readme",
+  "homepage": "https://github.com/yuchilling/dsh-dscost-tide#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yanzi-251147/dsh-dscost-tide.git"
+    "url": "git+https://github.com/yuchilling/dsh-dscost-tide.git"
   },
   "bugs": {
-    "url": "https://github.com/yanzi-251147/dsh-dscost-tide/issues"
+    "url": "https://github.com/yuchilling/dsh-dscost-tide/issues"
   },
   "publishConfig": {
     "access": "public"

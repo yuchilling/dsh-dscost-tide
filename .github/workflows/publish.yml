@@ -52,7 +52,7 @@ jobs:
         if: steps.exists.outputs.already != 'true'
         run: |
           node scripts/prepare-publish.mjs --no-pack --out .publish \
-            --repo "yanzi-251147/dsh-dscost-tide"
+            --repo "yuchilling/dsh-dscost-tide"
 
       - name: Publish
         if: steps.exists.outputs.already != 'true'

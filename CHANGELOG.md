@@ -2,6 +2,13 @@
 
 本文件记录 `dsh-dscost-tide` 的发布变更。版本号遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## 1.0.2 — 2026-10-31
+
+**变更**
+
+- GitHub 用户名由 `yanzi-251147` 改为 `yuchilling`（与 npm 账号统一），仓库地址随之变为 <https://github.com/yuchilling/dsh-dscost-tide>。
+- 包元数据里 `author`、`homepage`、`repository`、`bugs` 与 `publish.yml`、中英 README 里的仓库地址全部更新为 `yuchilling`；npm 包名不变（仍是 `dsh-dscost-tide`），安装命令不变。
+
 ## 1.0.1 — 2026-10-31
 
 **修复**
