@@ -56,7 +56,7 @@
 
 ```bash
 npm install -g dsh   # 已有 DSH 可跳过
-dsh plugin add @yanzi-251147/dsh-dscost-tide
+dsh plugin add dsh-dscost-tide
 ```
 
 或在「插件 → 已安装」里打开本插件。装好后**完全退出并重启 DeepSeek Harness**（客户端 bundle 在启动时预载，热更新拿不到新的 UI 代码）。
@@ -118,12 +118,14 @@ node scripts/check-publish.mjs     # 发布前自检（清单字段 / 文件 / �
 node scripts/prepare-publish.mjs   # 生成可发布副本并打包，打印 tarball 内容
 ```
 
-`prepare-publish` 会把可发布的文件复制到 `_intermediate/publish/`，可选择改写包名与仓库地址。发布到 npm 用 scoped 名是惯例，而本地工作树里的 `name` 保持 `dsh-dscost-tide` 不动（它是 profile `dependencies` / `dsh.profile.bundles` 里的安装键，改名会让两者失配），所以发布前跑一次：
+`prepare-publish` 会把可发布的文件复制到 `_intermediate/publish/`，并改写仓库地址。本地工作树里的 `name` 保持 `dsh-dscost-tide` 不动（它是 profile `dependencies` / `dsh.profile.bundles` 里的安装键），npm 上的包名也沿用同一个，发布前跑一次：
 
 ```bash
-node scripts/prepare-publish.mjs --name @yanzi-251147/dsh-dscost-tide --repo yanzi-251147/dsh-dscost-tide
+node scripts/prepare-publish.mjs --repo yanzi-251147/dsh-dscost-tide
 cd _intermediate/publish && npm publish --access public
 ```
+
+> npm 会先在建包时写一个 `0.0.0-stage` 占位版本再上传正式版本，这是 npm 对 bypass-2FA token 的新策略，属正常现象。发布只需要一次 `npm publish`，无需再批准。
 
 ## 许可
 

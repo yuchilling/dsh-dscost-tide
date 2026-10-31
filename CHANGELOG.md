@@ -18,7 +18,7 @@
 **变更**
 
 - 行 id 与座位占用 id 统一为插件名（先改名 `dsh-deepseek-tide`，最终随仓库定名 `dsh-dscost-tide`；更早是 `deepseek-tide`），避免与其他峰谷插件撞 id。
-- 项目定名 **`dsh-dscost-tide`**（与 GitHub 仓库同名），npm 发布名 `@yanzi-251147/dsh-dscost-tide`；回环路由前缀随之改为 `/dsh-dscost-tide/api`。
+- 项目定名 **`dsh-dscost-tide`**（与 GitHub 仓库同名），npm 发布名同为 `dsh-dscost-tide`（不带 scope，2026-10-31 已发布 1.0.0）；回环路由前缀随之改为 `/dsh-dscost-tide/api`。
 - 包元数据补全：`repository` / `homepage` / `bugs` / `keywords` / `files` / `engines`，可用于 npm 发布与插件市场收录。
 
 ## 0.4.1 — 2026-10-31

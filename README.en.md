@@ -42,7 +42,7 @@ Window        2026-10-05 to 2026-10-05
 Once published:
 
 ```bash
-dsh plugin add @yanzi-251147/dsh-dscost-tide
+dsh plugin add dsh-dscost-tide
 ```
 
 or open it in **Plugins → Installed**. Afterwards, **fully quit and restart DeepSeek Harness** — the client bundle is preloaded at startup, so a hot reload cannot pick up new UI code.
@@ -91,12 +91,14 @@ node scripts/check-publish.mjs     # manifest / files / placeholder checks
 node scripts/prepare-publish.mjs   # build the publishable copy and pack it
 ```
 
-The working tree keeps `"name": "dsh-dscost-tide"` (it is the install key in the profile's `dependencies` / `dsh.profile.bundles`), so publishing under the scoped npm name starts with:
+The working tree keeps `"name": "dsh-dscost-tide"` (it is the install key in the profile's `dependencies` / `dsh.profile.bundles`), and that same unscoped name is used on npm, so publishing starts with:
 
 ```bash
-node scripts/prepare-publish.mjs --name @yanzi-251147/dsh-dscost-tide --repo yanzi-251147/dsh-dscost-tide
+node scripts/prepare-publish.mjs --repo yanzi-251147/dsh-dscost-tide
 cd _intermediate/publish && npm publish --access public
 ```
+
+> npm writes a `0.0.0-stage` placeholder version when the package is first created and then uploads the real version — that is npm's current policy for bypass-2FA tokens, not a failure. One `npm publish` is enough; no approval step is involved.
 
 ## License
 
