@@ -2,6 +2,12 @@
 
 本文件记录 `dsh-dscost-tide` 的发布变更。版本号遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## 1.0.1 — 2026-10-31
+
+**修复**
+
+- npm 包里的 README 安装命令写成了 `@yanzi-251147/dsh-dscost-tide`，而实际发布名是不带 scope 的 `dsh-dscost-tide`（`@yanzi-251147` 不是 npm 账号所拥有的 scope）。本版本把中英 README、`publish.yml`、`CHANGELOG` 里的名字全部对齐为 `dsh plugin add dsh-dscost-tide`，并改由 GitHub Actions 发布，顺带验证 CI 发布链路。
+
 ## 1.0.0 — 2026-10-31
 
 首个公开版本。侧边栏底部卡片 + 点击弹窗，覆盖「现在是不是高峰时段、账户还有多少钱、这些钱花在哪些 token 上」。
