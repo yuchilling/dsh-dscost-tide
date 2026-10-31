@@ -10,22 +10,24 @@ A two-row card in the sidebar footer, tinted red during peak hours and green off
 
 ```
 ● Peak     2h 30m to off-peak
-¥6.77                      14:32
+¥balance                   14:32
 ```
 
 The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total, topped-up wallet, granted wallet), and usage statistics.
 
 ```
 Usage          [Today][7 days][30 days][All time]
-Tokens        10.69M        Cache hit rate   95.57%
-Cost          ¥1.27         API requests        137
-Prompt        10,550,026 (hit 10,082,816 · miss 467,210)
-Output        149,427
-Model calls   137 · ¥1.2666
-Web search    0 · ¥0.0000
-Days          6 · avg ¥0.2111
-Window        2026-10-05 to 2026-10-05
+Tokens        12.58M        Cache hit rate   98.00%
+Cost          ¥1.2345       API requests       128
+Prompt        12,345,678 (hit 12,098,764 · miss 246,914)
+Output        234,567
+Model calls   128 · ¥1.1945
+Web search    2 · ¥0.0400
+Days          7 · avg ¥0.1764
+Window        2026-01-01 to 2026-01-07
 ```
+
+> Every number above is illustrative and has nothing to do with any real account.
 
 ## Features
 

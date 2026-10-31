@@ -2,18 +2,24 @@
 
 本文件记录 `dsh-dscost-tide` 的发布变更。版本号遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## 1.0.3 — 2026-10-31
+
+**变更**
+
+- 文档脱敏：中英 README 的示意数据改为纯虚构值（并注明「与任何真实账户无关」），不再出现任何与真实账户余额、调用量、花费相关的数字。
+
 ## 1.0.2 — 2026-10-31
 
 **变更**
 
-- GitHub 用户名由 `yanzi-251147` 改为 `yuchilling`（与 npm 账号统一），仓库地址随之变为 <https://github.com/yuchilling/dsh-dscost-tide>。
+- GitHub 用户名改为 `yuchilling`（与 npm 账号统一），仓库地址随之变为 <https://github.com/yuchilling/dsh-dscost-tide>。
 - 包元数据里 `author`、`homepage`、`repository`、`bugs` 与 `publish.yml`、中英 README 里的仓库地址全部更新为 `yuchilling`；npm 包名不变（仍是 `dsh-dscost-tide`），安装命令不变。
 
 ## 1.0.1 — 2026-10-31
 
 **修复**
 
-- npm 包里的 README 安装命令写成了 `@yanzi-251147/dsh-dscost-tide`，而实际发布名是不带 scope 的 `dsh-dscost-tide`（`@yanzi-251147` 不是 npm 账号所拥有的 scope）。本版本把中英 README、`publish.yml`、`CHANGELOG` 里的名字全部对齐为 `dsh plugin add dsh-dscost-tide`，并改由 GitHub Actions 发布，顺带验证 CI 发布链路。
+- npm 包里的 README 安装命令写成了带 scope 的名字，而实际发布名是不带 scope 的 `dsh-dscost-tide`。本版本把中英 README、`publish.yml`、`CHANGELOG` 里的名字全部对齐为 `dsh plugin add dsh-dscost-tide`，并改由 GitHub Actions 发布，顺带验证 CI 发布链路。
 
 ## 1.0.0 — 2026-10-31
 
