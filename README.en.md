@@ -22,7 +22,7 @@ Cache hit     98.00%
 Cost          ¥0.0842
 ```
 
-Clicking the card opens the full dashboard **docked to the sidebar side, bottom-aligned** (440 px wide); click the card again or click outside to close it. The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total, topped-up wallet, granted wallet), and usage statistics.
+Clicking the card opens the full dashboard **docked to the sidebar side, bottom-aligned** (440 px wide); click the card again or click outside to close it. The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total only, plus the fetch time), and usage statistics.
 
 ```
 Usage          [Today][7 days][30 days][All time]
@@ -41,7 +41,7 @@ Window        2026-01-01 to 2026-01-07
 ## Features
 
 - **Peak/valley at a glance** — official windows (Beijing time, weekdays 09:00–12:00 and 14:00–18:00 are peak; everything else, including whole weekends since 2026-08-23, is off-peak), with a live countdown to the next switch.
-- **Account balance** — the Host's authorized DeepSeek account balance (topped-up + granted wallets), falling back to `DEEPSEEK_API_KEY` against `api.deepseek.com/user/balance`.
+- **Account balance** — the Host's authorized DeepSeek account balance, shown as a single **total** line with the fetch time, falling back to `DEEPSEEK_API_KEY` against `api.deepseek.com/user/balance`.
 - **Hover read-out** — resting the pointer on the card (or keyboard-focusing it) pops a small window with today's tokens, cache hit rate and cost, with a status line while loading or failing; a click expands the full dashboard, a second click closes it.
 - **Usage by time dimension** — `today` / `7 days` / `30 days` / `all time`, with consumed tokens, cache hit rate, cost and API request count, plus the prompt hit/miss split, output, model calls, web-search calls, daily average and covered window.
 - **Real prices** — every `assistant/message` usage record is priced with the band in force **at its own timestamp** (including the 2026-09-10 12:00 flash reprice); web searches are billed at ¥0.02 each.

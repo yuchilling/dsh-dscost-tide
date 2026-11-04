@@ -1,6 +1,6 @@
 {
   "name": "dsh-dscost-tide",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "DeepSeek peak/valley indicator in the DSH sidebar footer: phase at a glance, account balance, and a click-through dashboard with balance plus time-dimensioned token, cache-hit, cost and request statistics",
   "license": "MIT",
   "author": "yuchilling",
