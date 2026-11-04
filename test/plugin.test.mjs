@@ -159,7 +159,8 @@ const fakeReact = {
 	createElement: (type, props, ...children) => ({ type, props, children }),
 	Fragment: "Fragment",
 	useState: (initial) => [typeof initial === "function" ? initial() : initial, () => {}],
-	useEffect: () => {}
+	useEffect: () => {},
+				useRef: (initial) => ({ current: initial === undefined ? null : initial })
 };
 
 await import(CLIENT.href);

@@ -22,7 +22,7 @@ Cache hit     98.00%
 Cost          ¥0.0842
 ```
 
-Clicking the card opens the full dashboard **docked to the sidebar side, bottom-aligned** (440 px wide); click the card again or click outside to close it. The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total only, plus the fetch time), and usage statistics.
+Clicking the card opens the full dashboard **right above the card itself** (8 px of air, left edge flush with the card's left edge, 440 px wide); click the card again or click outside to close it. The dashboard is split into four sections: a peak-phase hero, the pricing schedule (countdown, next switch, 24-hour strip), the account balance (total only, plus the fetch time), and usage statistics.
 
 ```
 Usage          [Today][7 days][30 days][All time]

@@ -2,6 +2,12 @@
 
 本文件记录 `dsh-dscost-tide` 的发布变更。版本号遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## 1.1.2 — 2026-11-05
+
+**修复**
+
+- 弹窗不再盖住侧边栏卡片：打开时读取卡片自身的 `getBoundingClientRect()`，把弹窗**移到卡片正上方**（底边离卡片顶边 8 px），并让弹窗**左边框与卡片左边框对齐**。偏移通过 `--dspk-dock-left` / `--dspk-dock-bottom` 两个 CSS 自定义属性交给弹窗（弹窗属于 Shell 的 `Modal` 或自绘遮罩，接不到内联样式），窗口缩放时重新测量；弹窗最大高度随锚点自适应（`calc(100vh - var(--dspk-dock-bottom) - 12px)`），内容过高时内部滚动。
+
 ## 1.1.1 — 2026-11-05
 
 **变更**
