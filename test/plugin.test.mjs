@@ -316,3 +316,24 @@ test("client: usageSection explains loading and failure states", () => {
 	assert.ok(failed.includes("HTTP 500"));
 });
 
+
+test("client: usagePreview renders today's tokens, hit rate and cost", () => {
+	const tip = client.usagePreview({
+		status: "ready",
+		data: { totals: { totalTokens: 12580245, hitRate: 0.98, totalCost: 0.0842 } }
+	}, { left: 12, bottom: 34, now: Date.UTC(2026, 9, 12, 1, 30, 0) });
+	const lines = text(tip);
+	assert.ok(tip.props.className === "dspk_tip");
+	assert.ok(tip.props.style.left === "12px" && tip.props.style.bottom === "34px");
+	assert.ok(lines.includes("今日用量"));
+	assert.ok(lines.includes("消耗 token") && lines.includes("1258 万"));
+	assert.ok(lines.includes("缓存命中率") && lines.includes("98.00%"));
+	assert.ok(lines.includes("消耗金额") && lines.includes("¥0.0842"));
+});
+
+test("client: usagePreview shows a status line while loading or failed", () => {
+	const loading = text(client.usagePreview({ status: "loading", data: null, error: null }, { left: 0, bottom: 0, now: 0 }));
+	assert.ok(loading.includes("正在汇总"));
+	const failed = text(client.usagePreview({ status: "error", data: null, error: "HTTP 500" }, { left: 0, bottom: 0, now: 0 }));
+	assert.ok(failed.includes("统计不可用"));
+});

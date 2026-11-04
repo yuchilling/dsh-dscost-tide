@@ -2,6 +2,18 @@
 
 本文件记录 `dsh-dscost-tide` 的发布变更。版本号遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## 1.1.0 — 2026-11-05
+
+**新增**
+
+- 详情弹窗改为**贴着侧边栏这一侧、贴底部左对齐**（宽 440 px），不再浮在屏幕正中；`.dspk_overlay` 用 `align-items:flex-end` + `justify-content:flex-start`，primitives `Modal` 走 `.dspk_dock` 的 `align-self:flex-end` + `margin:0 auto 0 0`。
+- 卡片新增**悬浮速览**：鼠标移上去（或键盘聚焦）先弹出 236 px 的小窗，只显示今日的消耗 token、缓存命中率与消耗金额，并带当前北京时间；加载中显示「正在汇总…」，失败显示「统计不可用」。
+- 点击卡片打开大弹窗、再点一次关闭；悬浮窗改由插件自绘（`usagePreview()` → `.dspk_tip`），不再使用浏览器原生 `title` 提示。
+
+**变更**
+
+- 卡片与窄侧栏按钮的 `aria-label` 改为「时段 · 余额详情，点击查看详情」，替代原来的 `title` 长文本。
+
 ## 1.0.3 — 2026-10-31
 
 **变更**
